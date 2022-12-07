@@ -8,6 +8,19 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 4000
+# RUN npm run build
 
-CMD ["npm", "start"]
+RUN npm install -g serve
+
+EXPOSE 3000
+
+CMD [ "serve", "-s", "build", "-l", "3000" ]
+
+# FROM nginx:1.23.1-alpine
+# EXPOSE 5000
+# COPY ./docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+# COPY --from=build /app/dist /share/nginx/html
+
+
+
+

@@ -1,0 +1,47 @@
+version: '3.8'
+
+services: 
+  api:
+    build: ./backend
+    image: actuaryemma/api:1
+    container_name: backendcontainer
+    ports:
+      - '5000:5000'
+    networks:
+      - mynetwork
+    depends_on:
+      - mongo
+  client:
+    build: ./client
+    image: actuaryemma/frontend:1
+    container_name: clientcontainer
+    ports:
+      - '3000:3000'
+    networks:
+      - mynetwork 
+    depends_on:
+      - api
+
+    # volumes:
+    #   -mydb:/data/db 
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: Emma
+      MONGO_INITDB_ROOT_PASSWORD: Emma 
+    networks:
+      - mynetwork 
+    volumes:
+      - mydb:/data/db  
+
+networks:
+  mynetwork:
+    driver: bridge
+volumes:
+  mydb: 
+
+   
+ 

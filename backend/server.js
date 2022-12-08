@@ -44,6 +44,8 @@ app.use('/api/products', productRoute)
 
 // Define the PORT
 const PORT = process.env.PORT || 5000
+// const PORT = 5000
+
 
 app.listen(PORT, ()=>{
     console.log(`Server listening on port ${PORT}`)

@@ -38,4 +38,4 @@ Make sure that you have the following installed:
 - Run docker compose to install the image and create a container : `sudo docker compose up --build`
 - Backend runs on port `5000` and Frontend runs on port `3000`.
 - Push images to docker hub : `sudo docker compose push`
-- Go ahead a nd add a product (note that the price field only takes a numeric input) 
+- Go ahead a nd add a product (note that the price field only takes a numeric input ) 

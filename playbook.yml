@@ -1,0 +1,39 @@
+# ---
+#  - name: yolo playbook
+#    hosts: all
+#    become: true
+#    vars:
+#     repo: "git@github.com:ActuaryEmma/yolo.git"
+#     dest: "/home/DevOps/VM1"
+#     sshkey: "~/.ssh/id_rsa"
+#    tasks:
+#    - name: Clone a github repository
+#      git:
+#        repo: https://github.com/ActuaryEmma/yolo
+#        dest: /home/emma/DevOps/VM1
+#        clone: yes
+#        update: yes
+
+---
+- name: git module demo
+  hosts: all
+  become: true
+  vars:
+    repo: "https://github.com/ActuaryEmma/yolo"
+    dest: "/home/DevOps/VM1"
+    # sshkey: "~/.ssh/id_rsa"
+  tasks:
+    - name: Install git
+      apt:
+        name: git
+        state: present
+        update_cache: yes
+  
+
+    - name: checkout git repo
+      git:
+        repo: "{{ repo }}"
+        dest: "{{ dest }}"
+        # key_file: "{{ sshkey }}"
+
+

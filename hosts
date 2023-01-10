@@ -1,2 +1,1 @@
-[webserver]
-10.0.2.15 ansible_user=ubuntu
+emmaserver ansible_host=127.0.0.1 ansible_port=2222 

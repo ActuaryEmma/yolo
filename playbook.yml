@@ -99,11 +99,21 @@
     #     dest: /usr/local/bin/docker-compose
     #     mode: 'u+x,g+x'
 
+    # - name: Run container
+    #   become: True
+    #   shell: docker-compose -f /home/emma/yolo/docker-compose.yml up --build -d
+    #   args:
+    #     executable: /bin/bash
+
+
     - name: Run container
       become: True
-      shell: docker-compose -f /home/emma/yolo/docker-compose.yml up --build -d
+      pwd: /home/emma/yolo/docker-compose.yml
+      shell: docker-compose up --build -d
       args:
-        executable: /bin/bash
+        executable: /bin/bash    
+
+
         
         
         

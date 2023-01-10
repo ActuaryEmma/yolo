@@ -101,7 +101,7 @@
 
     - name: Run container
       become: True
-      shell: docker-compose -f /home/emma/yolo/docker-compose.yml --build up -d
+      shell: docker-compose -f /home/emma/yolo/docker-compose.yml up --build -d
       args:
         executable: /bin/bash
         

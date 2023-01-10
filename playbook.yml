@@ -53,66 +53,11 @@
       pip:
         name: docker
 
-    # - name: Install docker packages
-    #   apt:
-    #     state: present
-    #     update_cache: yes
-    #   with_items:
-    #     - apt-transport-https
-    #     - ca-certificates
-    #     - curl
-    #     - software-properties-common
-    #   tags:
-    #     - docker
-    # - name: Add Docker s official GPG key
-    #   apt_key:
-    #     url: https://download.docker.com/linux/ubuntu/gpg
-    #     state: present
-    #   tags:
-    #     - docker
-
-    # - name: Set up the stable repository
-    #   apt_repository:
-    #     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
-    #     state: present
-    #     update_cache: yes
-    #   tags:
-    #     - docker
-    # - name: Update apt packages
-    #   apt:
-    #     update_cache: yes
-    #   tags:
-    #     - docker
-    # - name: Install docker
-    #   apt:
-    #     name: docker-ce
-    #     state: present
-    #     update_cache: yes
-    #   #notify: Start docker on boot
-    #   tags:
-    #     - docker
-    
-    # - name: Install docker-compose
-    #   remote_user: ubuntu
-    #   get_url: 
-    #     url : https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
-    #     dest: /usr/local/bin/docker-compose
-    #     mode: 'u+x,g+x'
-
-    # - name: Run container
-    #   become: True
-    #   shell: docker-compose -f /home/emma/yolo/docker-compose.yml up --build -d
-    #   args:
-    #     executable: /bin/bash
-
-
     - name: Run container
       become: True
-      chdir: /home/emma/yolo/docker-compose.yml
-      shell: docker-compose up --build -d
-      # args:
-        
-      #   executable: /bin/bash    
+      shell: docker-compose -f /home/emma/yolo/docker-compose.yml up --build -d
+      args:
+        executable: /bin/bash
 
 
         

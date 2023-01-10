@@ -108,10 +108,11 @@
 
     - name: Run container
       become: True
+      chdir: /home/emma/yolo/docker-compose.yml
       shell: docker-compose up --build -d
-      args:
-        chdir: /home/emma/yolo/docker-compose.yml
-        executable: /bin/bash    
+      # args:
+        
+      #   executable: /bin/bash    
 
 
         

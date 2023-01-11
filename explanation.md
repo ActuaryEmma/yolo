@@ -36,3 +36,59 @@
 ## Docker Hub links
 [Yolo Frontend](https://hub.docker.com/repository/docker/actuaryemma/frontend)
 [Yolo Backend](https://hub.docker.com/repository/docker/actuaryemma/api)
+
+
+## Ansible
+*** Installation ***
+You need to install ansible, vagrant and virtualbox as per below instructions:
+- Follow along with the instructions outlined here in order to install Ansible 
+`https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html`
+- Instruction to install virtualbox `https://www.virtualbox.org/wiki/Linux_Downloads`
+- Instructions to install vagrant `https://developer.hashicorp.com/vagrant/downloads`
+
+*** Create a development environment ***
+ - Run `vagrant box add geerlingguy/ubuntu2004`
+   Select the “virtualbox” option.
+ - Run `vagrant init geerlingguy/ubuntu2004`  . This will create a `Vagrantfile`
+ - To boot the server run `vagrant up`
+ - Add hosts and ansible.cfg files
+
+ Open the Vagrantfile that was created when we used the vagrant init command. Add the following lines just before the final ‘end’ (Vagrantfiles use Ruby syntax, in case you’re wondering):
+
+  
+   `# Provisioning configuration for Ansible.
+  config.vm.provision "ansible" do |ansible|
+  ansible.playbook = "playbook.yml"
+  end `
+
+*** Ansible playbook ***
+- Create a file called `playbook.yml`
+  Add name of the playbook, hosts, tasks as below:
+`
+  ---
+  - name: Yolo Playbook
+  hosts: all
+  become: true
+  vars:
+    repo: "https://github.com/ActuaryEmma/yolo"
+    dest: "/home/emma/yolo"
+  tasks:
+    - name: Install Git
+      include_role:
+        name: git
+    
+    - name: checkout git repo
+      git:
+        repo: "{{ repo }}"
+        dest: "{{ dest }}"
+
+
+    - name: Install Docker
+      include_role:
+        name: docker
+
+    - name: Install image and container for the applicaton
+      include_role:
+        name: docker-compose `
+
+

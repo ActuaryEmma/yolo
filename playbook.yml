@@ -1,6 +1,6 @@
 
 ---
-- name: git module demo
+- name: Yolo Playbook
   hosts: all
   become: true
   vars:

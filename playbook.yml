@@ -1,0 +1,37 @@
+
+---
+- name: git module demo
+  hosts: all
+  become: true
+  vars:
+    repo: "https://github.com/ActuaryEmma/yolo"
+    dest: "/home/emma/yolo"
+  tasks:
+    - name: Install Git
+      include_role:
+        name: git
+    
+    - name: checkout git repo
+      git:
+        repo: "{{ repo }}"
+        dest: "{{ dest }}"
+
+
+    - name: Install Docker
+      include_role:
+        name: docker
+
+    - name: Run container
+      become: True
+      shell: docker-compose -f /home/emma/yolo/docker-compose.yml up --build -d
+      args:
+        executable: /bin/bash
+
+
+        
+        
+        
+
+       
+
+

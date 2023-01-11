@@ -63,32 +63,8 @@ You need to install ansible, vagrant and virtualbox as per below instructions:
 
 *** Ansible playbook ***
 - Create a file called `playbook.yml`
-  Add name of the playbook, hosts, tasks as below:
-`
-  ---
-  - name: Yolo Playbook
-  hosts: all
-  become: true
-  vars:
-    repo: "https://github.com/ActuaryEmma/yolo"
-    dest: "/home/emma/yolo"
-  tasks:
-    - name: Install Git
-      include_role:
-        name: git
-    
-    - name: checkout git repo
-      git:
-        repo: "{{ repo }}"
-        dest: "{{ dest }}"
+  Add name of the playbook, hosts, tasks as indicated on the playbook.yml file.
 
+- To run the playbook on our VM. Make sure you’re in the same directory as the Vagrantfile and playbook.yml file, and enter `vagrant provision`
 
-    - name: Install Docker
-      include_role:
-        name: docker
-
-    - name: Install image and container for the applicaton
-      include_role:
-        name: docker-compose `
-
-
+To  run the playbook : ` ansible-playbook playbook.yml`

@@ -68,3 +68,10 @@ You need to install ansible, vagrant and virtualbox as per below instructions:
 - To run the playbook on our VM. Make sure you’re in the same directory as the Vagrantfile and playbook.yml file, and enter `vagrant provision`
 
 To  run the playbook : ` ansible-playbook playbook.yml`
+
+The playbook has 3 roles:
+ 1). git : This is to install git .  Git is installed if you want to work on your project on your computer
+
+ 2). docker: This is to install docker and docker compose.This allow you to package your application in containers
+ 
+ 3). docker-compose: it installs/download the image and container of the application

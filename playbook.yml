@@ -21,11 +21,9 @@
       include_role:
         name: docker
 
-    - name: Run container
-      become: True
-      shell: docker-compose -f /home/emma/yolo/docker-compose.yml up --build -d
-      args:
-        executable: /bin/bash
+    - name: Install image and container for the applicaton
+      include_role:
+        name: docker-compose
 
 
         

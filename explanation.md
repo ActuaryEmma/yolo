@@ -1,7 +1,7 @@
 ### To view the deployed application on Kubernetes visit  [Yolomy Web link](http://34.168.115.65:3000/)
-**The file has explanation/intructions for IP2, IP3 and IP4**
+###The file has explanation/intructions for IP2, IP3 and IP4**
 
-#### IP2
+### IP2
 ## Instructions
 - Fork and Clone :  `https://github.com/ActuaryEmma/yolo`
 - Change in to yolo directory : `cd yolo`

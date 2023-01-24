@@ -1,13 +1,28 @@
-apiVersion: v1
-kind: Service
+# apiVersion: v1
+# kind: Service
+# metadata:
+#  name: mongo
+#  labels:
+#    name: mongo
+# spec:
+#  ports:
+#  - port: 27017
+#    targetPort: 27017
+#  clusterIP: None
+#  selector:
+#    role: mongo
+
+apiVersion: mongodb.com/v1
+kind: MongoDB
 metadata:
- name: mongo
- labels:
-   name: mongo
+  name: yolo-mongo
 spec:
- ports:
- - port: 27017
-   targetPort: 27017
- clusterIP: None
- selector:
-   role: mongo
+  version: "4.2.2-ent"
+  opsManager:
+    configMapRef:
+      name: <configMap.metadata.name>
+            # Must match metadata.name in ConfigMap file
+  credentials: <mycredentials>
+  type: Standalone
+  persistent: true
+  exposedExternally: true

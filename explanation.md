@@ -133,14 +133,14 @@ A YAML file for a Kubernetes resource typically includes the following fields:
                   image: actuaryemma/frontend:1
                   ports:
                     - containerPort: 3000
-        ```
+                    ```
 
   - This `client.yml` file creates a Pod named `yolo-client` with a single container named `clientcontainer` that runs the `actuaryemma/frontend:1` image from docker hub and exposes port `3000`.
 
   - This `api.yml` file creates a Pod named `yolo-api` with a single container named `backendcontainer` that runs the `actuaryemma/api:1` image from docker hub and exposes port `5000`.
 
   **Service**
-  ```
+`
   apiVersion: v1
   kind: Service
   metadata:
@@ -159,7 +159,7 @@ A YAML file for a Kubernetes resource typically includes the following fields:
         targetPort: 3000
         protocol: TCP
         name: http
-    ```    
+     `
   This above client.yml file creates a Service named `yolo-front` with the label `app: yolo` and namespace `my-yolo-app`.  The Service uses the selector `app: yolo` to identify the set of Pods that it should route traffic to. It has a single port named `http` with a port number of `3000` and target port of `3000`, and type `LoadBalancer` which  exposes the service to the External  network.
 
   This  api.yml  file creates a Service named `yolo-api` with the label `app: yolo` and namespace `my-yolo-app`.  The Service uses the selector `app: yolo` to identify the set of Pods that it should route traffic to. It has a single port named `http` with a port number of `5000` and target port of `3000`, and type `ClusterIP` which limits the service to the internal cluster network.
@@ -220,14 +220,14 @@ yolo-front-58985d9d4-jrjt7                     1/1     Running   0          7h7m
 
 `volume.yaml` has Persistent Volume and Persistent Volume Claim resource. 
 
-  apiVersion: The version of the Kubernetes API to use. `v1`
-  kind: The type of resource being created, in this case `PersistentVolume and PersistentVolumeClaim`.
+  apiVersion: The version of the Kubernetes API to use. **v1**
+  kind: The type of resource being created, in this case **PersistentVolume and PersistentVolumeClaim**.
   metadata: Metadata for the PV, including a name and labels.
   spec: The specifications for the PV, including the storage capacity and access modes.
 
   Update the deployment on both `api.yaml and client.yaml` that you want to associate the PV with.
   The files have `volumeMounts and volumes`
-
+  
   ```   volumeMounts:
         - name: yolo-pv
           mountPath: /var/www/html

@@ -140,7 +140,7 @@ A YAML file for a Kubernetes resource typically includes the following fields:
   - This `api.yml` file creates a Pod named `yolo-api` with a single container named `backendcontainer` that runs the `actuaryemma/api:1` image from docker hub and exposes port `5000`.
 
   **Service**
-```
+`
   apiVersion: v1
   kind: Service
   metadata:
@@ -159,7 +159,7 @@ A YAML file for a Kubernetes resource typically includes the following fields:
         targetPort: 3000
         protocol: TCP
         name: http
-     ```
+     `
   This above client.yml file creates a Service named `yolo-front` with the label `app: yolo` and namespace `my-yolo-app`.  The Service uses the selector `app: yolo` to identify the set of Pods that it should route traffic to. It has a single port named `http` with a port number of `3000` and target port of `3000`, and type `LoadBalancer` which  exposes the service to the External  network.
 
   This  api.yml  file creates a Service named `yolo-api` with the label `app: yolo` and namespace `my-yolo-app`.  The Service uses the selector `app: yolo` to identify the set of Pods that it should route traffic to. It has a single port named `http` with a port number of `5000` and target port of `3000`, and type `ClusterIP` which limits the service to the internal cluster network.

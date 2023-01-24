@@ -27,7 +27,7 @@ spec:
             mountPath: /var/www/html
       volumes:
       - name: yolo-pv
-        persistentvolumeclaim:
+        persistentVolumeClaim:
           claimName: yolo-pvc        
 ---
 apiVersion: v1

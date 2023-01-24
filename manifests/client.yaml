@@ -25,10 +25,10 @@ spec:
           volumeMounts:
           - name: yolo-pv
             mountPath: /var/www/html
-    volumes:
-    - name: yolo-pv
-      persistentvolumeclaim:
-        claimName: yolo-pvc   
+      volumes:
+      - name: yolo-pv
+        persistentvolumeclaim:
+          claimName: yolo-pvc   
 ---
 apiVersion: v1
 kind: Service

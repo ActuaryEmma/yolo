@@ -10,7 +10,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
-    pdName: yolo-disk
+    pdName: gke-yoloipk8s-default-pool-22f70666-2gpt 
     fsType: ext4
 
 

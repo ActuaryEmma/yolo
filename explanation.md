@@ -216,4 +216,35 @@ yolo-front-58985d9d4-jrjt7                     1/1     Running   0          7h7m
 - Get all objects in the namespace my-yolo-app and label app=yolo
    `kubectl get all -n my-yolo-app -l app=yolo`
 
-### To view the deployed application on Kubernetes  visit  [Yolomy Web link](http://34.168.115.65:3000/)
+## Persistent Volumes
+
+`volume.yaml` has Persistent Volume and Persistent Volume Claim resource. 
+
+    apiVersion: The version of the Kubernetes API to use. `v1`
+    kind: The type of resource being created, in this case `PersistentVolume` and `PersistentVolumeClaim`.
+    metadata: Metadata for the PV, including a name and labels.
+    spec: The specifications for the PV, including the storage capacity and access modes.
+
+    Update the deployment on both `api.yaml and client.yaml` that you want to associate the PV with.
+    The files have `volumeMounts` and `volumes`
+
+    ```
+       volumeMounts:
+          - name: yolo-pv
+            mountPath: /var/www/html
+      volumes:
+      - name: yolo-pv
+        persistentVolumeClaim:
+          claimName: yolo-pvc 
+          ```
+    The container has a `volumeMount` named `yolo-pv` that is mounted at the path `mountPath: /var/www/html` .
+    The `mountPath: /var/www/html`  is commonly used as a mount point for web servers.
+    The Container has volume name `yolo-pv` that is using the persistent volume claim `yolo-pvc`
+
+    To view list of the PVs : `kubectl get pv`
+    ```
+    NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS    
+    yolo-pv   10Gi       RWO            Retain           Available        
+    ```
+************************************************************************************************************
+###To view the deployed application on Kubernetes  visit  [Yolomy Web link](http://34.168.115.65:3000/)

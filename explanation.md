@@ -86,7 +86,7 @@ The playbook has 3 roles:
 
 #### Kubernetes
 # Step1
-- Create a  free Google cloud account 
+- Create a  free [Google cloud account](https://cloud.google.com/resources/forrester-cloud-migration-study/?utm_source=google&utm_medium=cpc&utm_campaign=FY22-Q2-emea-EM874-website-dl-app-mig-1&utm_content=ForresterMigration22-DEV_c-CRE_599021984092-ADGP_Hybrid%20%7C%20BKWS%20-%20EXA%20%7C%20Txt%20~%20GCP%20~%20General_Core%233-KWID_43700071177485181-kwd-6458750523-userloc_9076838&utm_term=KW_google%20cloud-NET_g-PLAC_&gclid=CjwKCAiAoL6eBhA3EiwAXDom5ub929JMPR0Ms0wGdk6f0hM9LOD-a3ebhVb4McvtSWbIcG6rqYk9eBoCyLMQAvD_BwE&gclsrc=aw.ds)
 
 # Step2
 - Create a Project and cluster using you Google cloud account.
@@ -99,23 +99,23 @@ The playbook has 3 roles:
 `api.yml` has the deployment and service object for backend and `client.yaml` has for client.
 
 A YAML file for a Kubernetes resource typically includes the following fields:
-  # **Deployment**
+  **Deployment
   - apiVersion: The version of the Kubernetes API that the resource belongs to.(app/vm1)
   - kind: The type of resource being defined (e.g. Pod, Service, Deployment).
   - metadata: Information about the resource, such as its name and labels.
         e.g From api.yml 
-        
+        ```
            metadata:
             name: yolo-front
             namespace: my-yolo-app
             labels:
               app: yolo
-              component: front
+              component: front ```
 
 
   - spec: The desired state of the resource, including its configuration.
         e.g From client.yaml
-
+```
         spec:
           replicas: 3
           selector:
@@ -132,13 +132,14 @@ A YAML file for a Kubernetes resource typically includes the following fields:
                   image: actuaryemma/frontend:1
                   ports:
                     - containerPort: 3000
+                    ```
 
   - This client.yml file creates a Pod named "yolo-client" with a single container named "clientcontainer" that runs the "actuaryemma/frontend:1" image from docker hub and exposes port 3000.
 
   - This YAML file creates a Pod named "yolo-api" with a single container named "backendcontainer" that runs the "actuaryemma/api:1" image from docker hub and exposes port 5000.
 
-  # **Service**
-
+  **Service
+```
   apiVersion: v1
   kind: Service
   metadata:
@@ -156,7 +157,7 @@ A YAML file for a Kubernetes resource typically includes the following fields:
       - port: 3000
         targetPort: 3000
         protocol: TCP
-        name: http
+        name: http ```
   This above client.yml file creates a Service named "yolo-front" with the label "app: yolo" and namespace "my-yolo-app".  The Service uses the selector "app: yolo" to identify the set of Pods that it should route traffic to. It has a single port named "http" with a port number of 3000 and target port of 3000, and type "LoadBalancer" which  exposes the service to the External  network.
 
   This  api.yml  file creates a Service named "yolo-api" with the label "app: yolo" and namespace "my-yolo-app".  The Service uses the selector "app: yolo" to identify the set of Pods that it should route traffic to. It has a single port named "http" with a port number of 5000 and target port of 3000, and type "ClusterIP" which limits the service to the internal cluster network.
@@ -198,6 +199,7 @@ yolo-api     ClusterIP      10.108.8.144   <none>          5000/TCP         7h6m
 yolo-front   LoadBalancer   10.108.5.175   34.168.115.65   3000:31692/TCP   7h8m
 ```
 To view pods in your namespace run below command
+```
 emma_gachoki@cloudshell:~ (yolo-project-375319)$ kubectl get pods --namespace my-yolo-app
 NAME                                           READY   STATUS    RESTARTS   AGE
 mongodb-kubernetes-operator-678dbb647b-jtx8j   0/1     Pending   0          3h44m
@@ -206,10 +208,10 @@ yolo-api-6b6cc8cc7-6zcvs                       1/1     Running   0          7h5m
 yolo-api-6b6cc8cc7-k2cxg                       1/1     Running   0          7h5m
 yolo-front-58985d9d4-2tvxf                     1/1     Running   0          7h7m
 yolo-front-58985d9d4-j595b                     1/1     Running   0          7h7m
-yolo-front-58985d9d4-jrjt7                     1/1     Running   0          7h7m
+yolo-front-58985d9d4-jrjt7                     1/1     Running   0          7h7m ```
 
 
 - Get all objects in the namespace my-yolo-app and label app=yolo
    kubectl get all -n my-yolo-app -l app=yolo
 
-### To view the deployed application visit  [Yolomy link](http://34.168.115.65:3000/)
+### To view the deployed application visit  [Yolomy Web link](http://34.168.115.65:3000/)

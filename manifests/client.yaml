@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: yolo-front
+  namespace: my-yolo-app
   labels:
     app: yolo
     component: front
@@ -26,6 +27,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: yolo-front
+  namespace: my-yolo-app
   labels:
     app: yolo
     component: front

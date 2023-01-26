@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yolo-api
+  name: yolo-api-app
   namespace: my-yolo-app
   labels:
     app: yolo
@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: yolo-api
+  name: yolo-api-app
   namespace: my-yolo-app
   labels:
     app: yolo

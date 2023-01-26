@@ -10,7 +10,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
-    pdName: gke-yoloipk8s-default-pool-22f70666-2gpt 
+    pdName: gke-yolo-app-default-pool-35d49dd6-50zd 
     fsType: ext4
 
 

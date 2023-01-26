@@ -29,7 +29,7 @@ spec:
         app: mongodb
     spec:
       containers:
-      - name: mongo_db
+      - name: mongodb
         image: mongo
         env:
         - name: MONGO_INITDB_ROOT_USERNAME

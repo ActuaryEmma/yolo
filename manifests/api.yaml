@@ -22,13 +22,13 @@ spec:
           image: actuaryemma/api:1
           ports:
             - containerPort: 5000
-          volumeMounts:
-          - name: yolo-pv
-            mountPath: /var/www/html
-      volumes:
-      - name: yolo-pv
-        persistentVolumeClaim:
-          claimName: yolo-pvc        
+      #     volumeMounts:
+      #     - name: yolo-pv
+      #       mountPath: /var/www/html
+      # volumes:
+      # - name: yolo-pv
+      #   persistentVolumeClaim:
+      #     claimName: yolo-pvc        
 ---
 apiVersion: v1
 kind: Service

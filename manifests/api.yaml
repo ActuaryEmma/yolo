@@ -20,6 +20,9 @@ spec:
       containers:
         - name: backendcontainer
           image: actuaryemma/api:1
+          env:
+          - name: MONGO_URL
+            value: mongodb://mongodb-service:27017/mydb  
           ports:
             - containerPort: 5000
       #     volumeMounts:

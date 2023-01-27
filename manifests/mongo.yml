@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb-deployment
-  namespace: my-yolo-app
+  # namespace: my-yolo-app
 spec:
   replicas: 1
   selector:
@@ -37,7 +37,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongodb-service
-  namespace: my-yolo-app
+  # namespace: my-yolo-app
 spec:
   selector:
     app: mongodb

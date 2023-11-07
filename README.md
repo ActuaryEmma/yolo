@@ -1,4 +1,3 @@
-### To view the deployed application on Kubernetes  visit  [Yolomy Web link](http://34.168.115.65:3000/)
 # Requirements
 Make sure that you have the following installed:
 - [node](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04) 

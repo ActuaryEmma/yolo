@@ -211,5 +211,3 @@ yolo-front-58985d9d4-jrjt7                     1/1     Running   0          7h7m
 
 - Get all objects in the namespace my-yolo-app and label app=yolo
    `kubectl get all -n my-yolo-app -l app=yolo`
-
-### To view the deployed application visit  [Yolomy Web link](http://34.168.115.65:3000/)
